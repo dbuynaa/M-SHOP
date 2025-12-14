@@ -3,7 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { StarIcon } from "@sanity/icons";
+// import { StarIcon } from "@sanity/icons";
 import { Flame } from "lucide-react";
 import PriceView from "./PriceView";
 import Title from "./Title";
@@ -54,7 +54,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <Title className="text-sm line-clamp-1">{product?.name}</Title>
         <div className="flex items-center gap-2">
           <div className="flex items-center">
-            {[...Array(5)].map((_, index) => (
+            {/* {[...Array(5)].map((_, index) => (
               <StarIcon
                 key={index}
                 className={
@@ -62,7 +62,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 }
                 fill={index < 4 ? "#93D991" : "#ababab"}
               />
-            ))}
+            ))} */}
           </div>
           <p className="text-lightText text-xs tracking-wide">5 Reviews</p>
         </div>
@@ -70,7 +70,11 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="flex items-center gap-2.5">
           <p className="font-medium">In Stock</p>
           <p
-            className={`${product?.stock === 0 ? "text-red-600" : "text-shop_dark_green/80 font-semibold"}`}
+            className={`${
+              product?.stock === 0
+                ? "text-red-600"
+                : "text-shop_dark_green/80 font-semibold"
+            }`}
           >
             {(product?.stock as number) > 0 ? product?.stock : "unavailable"}
           </p>

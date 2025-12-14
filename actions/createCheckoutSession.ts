@@ -1,10 +1,7 @@
 "use server";
 
-import stripe from "@/lib/stripe";
 import { Address } from "@/sanity.types";
-import { urlFor } from "@/sanity/lib/image";
 import { CartItem } from "@/store";
-import Stripe from "stripe";
 
 export interface Metadata {
   orderNumber: string;
@@ -19,61 +16,61 @@ export interface GroupedCartItems {
   quantity: number;
 }
 
+/**
+ * Placeholder for local payment gateway integration
+ *
+ * TODO: Implement checkout session creation for your local payment gateway
+ * This function should:
+ * 1. Create a payment session/transaction with your payment provider
+ * 2. Return the payment URL or redirect URL
+ * 3. Handle payment metadata and order information
+ *
+ * @param items - Array of cart items with product and quantity
+ * @param metadata - Order metadata including customer info and address
+ * @returns Payment URL or checkout URL
+ */
 export async function createCheckoutSession(
   items: GroupedCartItems[],
   metadata: Metadata
-) {
+): Promise<string> {
   try {
-    // Retrieve existing customer or create a new one
-    const customers = await stripe.customers.list({
-      email: metadata.customerEmail,
-      limit: 1,
+    // TODO: Replace with your local payment gateway integration
+    // Example structure:
+    // 1. Calculate total amount
+    // 2. Create payment transaction with your gateway
+    // 3. Store order information temporarily (if needed)
+    // 4. Return payment/checkout URL
+
+    const totalAmount = items.reduce(
+      (sum, item) => sum + (item.product?.price || 0) * item.quantity,
+      0
+    );
+
+    console.log("Checkout session requested:", {
+      orderNumber: metadata.orderNumber,
+      itemsCount: items.length,
+      totalAmount,
+      customerEmail: metadata.customerEmail,
     });
-    const customerId = customers?.data?.length > 0 ? customers.data[0].id : "";
 
-    const sessionPayload: Stripe.Checkout.SessionCreateParams = {
-      metadata: {
-        orderNumber: metadata.orderNumber,
-        customerName: metadata.customerName,
-        customerEmail: metadata.customerEmail,
-        clerkUserId: metadata.clerkUserId!,
-        address: JSON.stringify(metadata.address),
-      },
-      mode: "payment",
-      allow_promotion_codes: true,
-      payment_method_types: ["card"],
-      invoice_creation: {
-        enabled: true,
-      },
-      success_url: `${
-        process.env.NEXT_PUBLIC_BASE_URL
-      }/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
-      line_items: items?.map((item) => ({
-        price_data: {
-          currency: "USD",
-          unit_amount: Math.round(item?.product?.price! * 100),
-          product_data: {
-            name: item?.product?.name || "Unknown Product",
-            description: item?.product?.description,
-            metadata: { id: item?.product?._id },
-            images:
-              item?.product?.images && item?.product?.images?.length > 0
-                ? [urlFor(item?.product?.images[0]).url()]
-                : undefined,
-          },
-        },
-        quantity: item?.quantity,
-      })),
-    };
-    if (customerId) {
-      sessionPayload.customer = customerId;
-    } else {
-      sessionPayload.customer_email = metadata.customerEmail;
-    }
+    // Placeholder: Return a success page URL
+    // Replace this with actual payment gateway integration
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    return `${baseUrl}/success?orderNumber=${metadata.orderNumber}`;
 
-    const session = await stripe.checkout.sessions.create(sessionPayload);
-    return session.url;
+    // Example implementation structure:
+    // const paymentResponse = await yourPaymentGateway.createTransaction({
+    //   amount: totalAmount,
+    //   currency: "MNT", // or your local currency
+    //   orderId: metadata.orderNumber,
+    //   customerEmail: metadata.customerEmail,
+    //   items: items.map(item => ({
+    //     productId: item.product._id,
+    //     quantity: item.quantity,
+    //     price: item.product.price,
+    //   })),
+    // });
+    // return paymentResponse.checkoutUrl;
   } catch (error) {
     console.error("Error creating Checkout Session", error);
     throw error;
