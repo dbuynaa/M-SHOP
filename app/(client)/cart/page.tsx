@@ -71,11 +71,11 @@ const CartPage = () => {
   }, []);
   const handleResetCart = () => {
     const confirmed = window.confirm(
-      "Are you sure you want to reset your cart?"
+      "Та сагсаа цэвэрлэхдээ итгэлтэй байна уу?"
     );
     if (confirmed) {
       resetCart();
-      toast.success("Cart reset successfully!");
+      toast.success("Сагс амжилттай цэвэрлэгдлээ!");
     }
   };
 
@@ -107,7 +107,7 @@ const CartPage = () => {
             <>
               <div className="flex items-center gap-2 py-5">
                 <ShoppingBag className="text-darkColor" />
-                <Title>Shopping Cart</Title>
+                <Title>Худалдан авалтын сагс</Title>
               </div>
               <div className="grid lg:grid-cols-3 md:gap-8">
                 <div className="lg:col-span-2 rounded-lg">
@@ -128,7 +128,7 @@ const CartPage = () => {
                               >
                                 <Image
                                   src={urlFor(product?.images[0]).url()}
-                                  alt="productImage"
+                                  alt="Бүтээгдэхүүний зураг"
                                   width={500}
                                   height={500}
                                   loading="lazy"
@@ -142,13 +142,13 @@ const CartPage = () => {
                                   {product?.name}
                                 </h2>
                                 <p className="text-sm capitalize">
-                                  Variant:{" "}
+                                  Хувилбар:{" "}
                                   <span className="font-semibold">
                                     {product?.variant}
                                   </span>
                                 </p>
                                 <p className="text-sm capitalize">
-                                  Status:{" "}
+                                  Төлөв:{" "}
                                   <span className="font-semibold">
                                     {product?.status}
                                   </span>
@@ -164,7 +164,7 @@ const CartPage = () => {
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold">
-                                      Add to Favorite
+                                      Дуртай нэмэх
                                     </TooltipContent>
                                   </Tooltip>
                                   <Tooltip>
@@ -173,14 +173,14 @@ const CartPage = () => {
                                         onClick={() => {
                                           deleteCartProduct(product?._id);
                                           toast.success(
-                                            "Product deleted successfully!"
+                                            "Бүтээгдэхүүн амжилттай устгалаа!"
                                           );
                                         }}
                                         className="w-4 h-4 md:w-5 md:h-5 mr-1 text-gray-500 hover:text-red-600 hoverEffect"
                                       />
                                     </TooltipTrigger>
                                     <TooltipContent className="font-bold bg-red-600">
-                                      Delete product
+                                      Бүтээгдэхүүн устгах
                                     </TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
@@ -202,7 +202,7 @@ const CartPage = () => {
                       className="m-5 font-semibold"
                       variant="destructive"
                     >
-                      Reset Cart
+                      Сагс цэвэрлэх
                     </Button>
                   </div>
                 </div>
@@ -210,22 +210,22 @@ const CartPage = () => {
                   <div className="lg:col-span-1">
                     <div className="hidden md:inline-block w-full bg-white p-6 rounded-lg border">
                       <h2 className="text-xl font-semibold mb-4">
-                        Order Summary
+                        Захиалгын хураангуй
                       </h2>
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span>SubTotal</span>
+                          <span>Дэд нийлбэр</span>
                           <PriceFormatter amount={getSubTotalPrice()} />
                         </div>
                         <div className="flex items-center justify-between">
-                          <span>Discount</span>
+                          <span>Хямдрал</span>
                           <PriceFormatter
                             amount={getSubTotalPrice() - getTotalPrice()}
                           />
                         </div>
                         <Separator />
                         <div className="flex items-center justify-between font-semibold text-lg">
-                          <span>Total</span>
+                          <span>Нийт</span>
                           <PriceFormatter
                             amount={getTotalPrice()}
                             className="text-lg font-bold text-black"
@@ -237,7 +237,7 @@ const CartPage = () => {
                           disabled={loading}
                           onClick={handleCheckout}
                         >
-                          {loading ? "Please wait..." : "Proceed to Checkout"}
+                          {loading ? "Хүлээгээрэй..." : "Төлбөр төлөх"}
                         </Button>
                       </div>
                     </div>
@@ -245,7 +245,7 @@ const CartPage = () => {
                       <div className="bg-white rounded-md mt-5">
                         <Card>
                           <CardHeader>
-                            <CardTitle>Delivery Address</CardTitle>
+                            <CardTitle>Хүргэлтийн хаяг</CardTitle>
                           </CardHeader>
                           <CardContent>
                             <RadioGroup
@@ -257,7 +257,10 @@ const CartPage = () => {
                                 <div
                                   key={address?._id}
                                   onClick={() => setSelectedAddress(address)}
-                                  className={`flex items-center space-x-2 mb-4 cursor-pointer ${selectedAddress?._id === address?._id && "text-shop_dark_green"}`}
+                                  className={`flex items-center space-x-2 mb-4 cursor-pointer ${
+                                    selectedAddress?._id === address?._id &&
+                                    "text-shop_dark_green"
+                                  }`}
                                 >
                                   <RadioGroupItem
                                     value={address?._id.toString()}
@@ -278,7 +281,7 @@ const CartPage = () => {
                               ))}
                             </RadioGroup>
                             <Button variant="outline" className="w-full mt-4">
-                              Add New Address
+                              Шинэ хаяг нэмэх
                             </Button>
                           </CardContent>
                         </Card>
@@ -289,21 +292,21 @@ const CartPage = () => {
                 {/* Order summary for mobile view */}
                 <div className="md:hidden fixed bottom-0 left-0 w-full bg-white pt-2">
                   <div className="bg-white p-4 rounded-lg border mx-4">
-                    <h2>Order Summary</h2>
+                    <h2>Захиалгын хураангуй</h2>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span>SubTotal</span>
+                        <span>Дэд нийлбэр</span>
                         <PriceFormatter amount={getSubTotalPrice()} />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span>Discount</span>
+                        <span>Хямдрал</span>
                         <PriceFormatter
                           amount={getSubTotalPrice() - getTotalPrice()}
                         />
                       </div>
                       <Separator />
                       <div className="flex items-center justify-between font-semibold text-lg">
-                        <span>Total</span>
+                        <span>Нийт</span>
                         <PriceFormatter
                           amount={getTotalPrice()}
                           className="text-lg font-bold text-black"
@@ -315,7 +318,7 @@ const CartPage = () => {
                         disabled={loading}
                         onClick={handleCheckout}
                       >
-                        {loading ? "Please wait..." : "Proceed to Checkout"}
+                        {loading ? "Хүлээгээрэй..." : "Төлбөр төлөх"}
                       </Button>
                     </div>
                   </div>

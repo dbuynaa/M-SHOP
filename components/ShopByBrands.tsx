@@ -8,23 +8,23 @@ import { GitCompareArrows, Headset, ShieldCheck, Truck } from "lucide-react";
 
 const extraData = [
   {
-    title: "Free Delivery",
-    description: "Free shipping over $100",
+    title: "Үнэгүй хүргэлт",
+    description: "$100-аас дээш үнэгүй хүргэлт",
     icon: <Truck size={45} />,
   },
   {
-    title: "Free Return",
-    description: "Free shipping over $100",
+    title: "Үнэгүй буцаах",
+    description: "$100-аас дээш үнэгүй хүргэлт",
     icon: <GitCompareArrows size={45} />,
   },
   {
-    title: "Customer Support",
-    description: "Friendly 27/7 customer support",
+    title: "Харилцагчийн дэмжлэг",
+    description: "Найрсаг 24/7 харилцагчийн дэмжлэг",
     icon: <Headset size={45} />,
   },
   {
-    title: "Money Back guarantee",
-    description: "Quality checked by our team",
+    title: "Мөнгийг буцаах баталгаа",
+    description: "Манай багийн чанарын шалгалт",
     icon: <ShieldCheck size={45} />,
   },
 ];
@@ -34,12 +34,12 @@ const ShopByBrands = async () => {
   return (
     <div className="mb-10 lg:mb-20 bg-shop_light_bg p-5 lg:p-7 rounded-md">
       <div className="flex items-center gap-5 justify-between mb-10">
-        <Title>Shop By Brands</Title>
+        <Title>Брэндээр худалдан авах</Title>
         <Link
           href={"/shop"}
           className="text-sm font-semibold tracking-wide hover:text-shop_btn_dark_green hoverEffect"
         >
-          View all
+          Бүгдийг харах
         </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2.5">
@@ -52,7 +52,7 @@ const ShopByBrands = async () => {
             {brand?.image && (
               <Image
                 src={urlFor(brand?.image).url()}
-                alt="brandImage"
+                alt="Брэндийн зураг"
                 width={250}
                 height={250}
                 className="w-32 h-20 object-contain"

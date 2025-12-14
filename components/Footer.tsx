@@ -18,8 +18,9 @@ const Footer = () => {
           <div className="space-y-4">
             <Logo />
             <SubText>
-              Discover curated furniture collections at Shopcartyt, blending
-              style and comfort to elevate your living spaces.
+              Shopcartyt дээрх сонгосон мебелийн цуглуулгуудыг олж мэдэж, хэв
+              маяг болон тохилог байдлыг нэгтгэж амьдралын талбайгаа сайжруулна
+              уу.
             </SubText>
             <SocialMedia
               className="text-darkColor/60"
@@ -28,7 +29,7 @@ const Footer = () => {
             />
           </div>
           <div>
-            <SubTitle>Quick Links</SubTitle>
+            <SubTitle>Холбоос</SubTitle>
             <ul className="space-y-3 mt-4">
               {quickLinksData?.map((item) => (
                 <li key={item?.title}>
@@ -43,7 +44,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <SubTitle>Categories</SubTitle>
+            <SubTitle>Ангилал</SubTitle>
             <ul className="space-y-3 mt-4">
               {categoriesData?.map((item) => (
                 <li key={item?.title}>
@@ -58,21 +59,25 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-4">
-            <SubTitle>Newsletter</SubTitle>
+            <SubTitle>Мэдээлэл</SubTitle>
             <SubText>
-              Subscribe to our newsletter to receive updates and exclusive
-              offers
+              Шинэчлэл болон онцгой санал болголтуудыг хүлээн авахын тулд
+              мэдээллийн хуудсанд бүртгүүлнэ үү
             </SubText>
             <form className="space-y-3">
-              <Input placeholder="Enter your email" type="email" required />
-              <Button className="w-full">Subscribe</Button>
+              <Input
+                placeholder="Имэйл хаягаа оруулна уу"
+                type="email"
+                required
+              />
+              <Button className="w-full">Бүртгүүлэх</Button>
             </form>
           </div>
         </div>
         <div className="py-6 border-t text-center text-sm text-gray-600">
           <div>
-            © {new Date().getFullYear()} <Logo className="text-sm" />. All
-            rights reserved.
+            © {new Date().getFullYear()} <Logo className="text-sm" />. Бүх эрх
+            хуулиар хамгаалагдсан.
           </div>
         </div>
       </Container>

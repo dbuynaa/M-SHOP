@@ -31,7 +31,7 @@ const SingleBlogPage = async ({
           {blog?.mainImage && (
             <Image
               src={urlFor(blog?.mainImage).url()}
-              alt={blog.title || "Blog Image"}
+              alt={blog.title || "Блогийн зураг"}
               width={800}
               height={800}
               className="w-full max-h-[500px] object-cover rounded-lg"
@@ -223,7 +223,7 @@ const BlogLeft = async ({ slug }: { slug: string }) => {
               {blog?.mainImage && (
                 <Image
                   src={urlFor(blog?.mainImage).url()}
-                  alt="blogImage"
+                  alt="Блогийн зураг"
                   width={100}
                   height={100}
                   className="w-16 h-16 rounded-full object-cover border-[1px] border-shop_dark_green/10 group-hover:border-shop_dark_green hoverEffect"

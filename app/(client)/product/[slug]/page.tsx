@@ -53,9 +53,13 @@ const SingleProductPage = async ({
             className="text-lg font-bold"
           />
           <p
-            className={`px-4 py-1.5 text-sm text-center inline-block font-semibold rounded-lg ${product?.stock === 0 ? "bg-red-100 text-red-600" : "text-green-600 bg-green-100"}`}
+            className={`px-4 py-1.5 text-sm text-center inline-block font-semibold rounded-lg ${
+              product?.stock === 0
+                ? "bg-red-100 text-red-600"
+                : "text-green-600 bg-green-100"
+            }`}
           >
-            {(product?.stock as number) > 0 ? "In Stock" : "Out of Stock"}
+            {(product?.stock as number) > 0 ? "Байгаа" : "Дууссан"}
           </p>
         </div>
         <div className="flex items-center gap-2.5 lg:gap-3">
@@ -66,19 +70,19 @@ const SingleProductPage = async ({
         <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <RxBorderSplit className="text-lg" />
-            <p>Compare color</p>
+            <p>Өнгө харьцуулах</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <FaRegQuestionCircle className="text-lg" />
-            <p>Ask a question</p>
+            <p>Асуулт асуух</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <TbTruckDelivery className="text-lg" />
-            <p>Delivery & Return</p>
+            <p>Хүргэлт & Буцаах</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <FiShare2 className="text-lg" />
-            <p>Share</p>
+            <p>Хуваалцах</p>
           </div>
         </div>
         <div className="flex flex-col">
@@ -86,10 +90,10 @@ const SingleProductPage = async ({
             <Truck size={30} className="text-shop_orange" />
             <div>
               <p className="text-base font-semibold text-black">
-                Free Delivery
+                Үнэгүй хүргэлт
               </p>
               <p className="text-sm text-gray-500 underline underline-offset-2">
-                Enter your Postal code for Delivey Availability.
+                Хүргэлтийн боломжийг шалгахын тулд шуудангийн кодыг оруулна уу.
               </p>
             </div>
           </div>
@@ -97,11 +101,13 @@ const SingleProductPage = async ({
             <CornerDownLeft size={30} className="text-shop_orange" />
             <div>
               <p className="text-base font-semibold text-black">
-                Return Delivery
+                Буцаах хүргэлт
               </p>
               <p className="text-sm text-gray-500 ">
-                Free 30days Delivery Returns.{" "}
-                <span className="underline underline-offset-2">Details</span>
+                30 хоногийн үнэгүй буцаах хүргэлт.{" "}
+                <span className="underline underline-offset-2">
+                  Дэлгэрэнгүй
+                </span>
               </p>
             </div>
           </div>

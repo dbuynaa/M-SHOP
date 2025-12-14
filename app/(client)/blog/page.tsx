@@ -14,14 +14,14 @@ const BlogPage = async () => {
   return (
     <div>
       <Container>
-        <Title>Blog page</Title>
+        <Title>Блог хуудас</Title>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 md:mt-10">
           {blogs?.map((blog) => (
             <div key={blog?._id} className="rounded-md overflow-hidden group">
               {blog?.mainImage && (
                 <Image
                   src={urlFor(blog?.mainImage).url()}
-                  alt="blogImage"
+                  alt="Блогийн зураг"
                   width={500}
                   height={500}
                   className="w-full max-h-80 object-cover"

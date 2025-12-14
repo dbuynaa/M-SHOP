@@ -18,7 +18,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           <Link href={`/product/${product?.slug?.current}`}>
             <Image
               src={urlFor(product.images[0]).url()}
-              alt="productImage"
+              alt="Бүтээгдэхүүний зураг"
               width={500}
               height={500}
               priority
@@ -64,11 +64,11 @@ const ProductCard = ({ product }: { product: Product }) => {
               />
             ))} */}
           </div>
-          <p className="text-lightText text-xs tracking-wide">5 Reviews</p>
+          <p className="text-lightText text-xs tracking-wide">5 Сэтгэгдэл</p>
         </div>
 
         <div className="flex items-center gap-2.5">
-          <p className="font-medium">In Stock</p>
+          <p className="font-medium">Нөөц</p>
           <p
             className={`${
               product?.stock === 0
@@ -76,7 +76,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 : "text-shop_dark_green/80 font-semibold"
             }`}
           >
-            {(product?.stock as number) > 0 ? product?.stock : "unavailable"}
+            {(product?.stock as number) > 0 ? product?.stock : "байхгүй"}
           </p>
         </div>
 

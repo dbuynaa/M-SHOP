@@ -31,33 +31,35 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="!max-w-4xl max-h-[90vh] overflow-y-scroll">
         <DialogHeader>
-          <DialogTitle>Order Details - {order?.orderNumber}</DialogTitle>
+          <DialogTitle>
+            Захиалгын дэлгэрэнгүй - {order?.orderNumber}
+          </DialogTitle>
         </DialogHeader>
         <div className="mt-4">
           <p>
-            <strong>Customer:</strong> {order.customerName}
+            <strong>Харилцагч:</strong> {order.customerName}
           </p>
           <p>
-            <strong>Email:</strong> {order.email}
+            <strong>Имэйл:</strong> {order.email}
           </p>
           <p>
-            <strong>Date:</strong>{" "}
+            <strong>Огноо:</strong>{" "}
             {order.orderDate && new Date(order.orderDate).toLocaleDateString()}
           </p>
           <p>
-            <strong>Status:</strong>{" "}
+            <strong>Төлөв:</strong>{" "}
             <span className="capitalize text-green-600 font-medium">
               {order.status}
             </span>
           </p>
           <p>
-            <strong>Invoice Number:</strong> {order?.invoice?.number}
+            <strong>Нэхэмжлэхийн дугаар:</strong> {order?.invoice?.number}
           </p>
           {order?.invoice && (
             <Button className="bg-transparent border text-darkColor/80 mt-2 hover:text-darkColor hover:border-darkColor hover:bg-darkColor/10 hoverEffect ">
               {order?.invoice?.hosted_invoice_url && (
                 <Link href={order?.invoice?.hosted_invoice_url} target="_blank">
-                  Download Invoice
+                  Нэхэмжлэх татах
                 </Link>
               )}
             </Button>
@@ -66,9 +68,9 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Product</TableHead>
-              <TableHead>Quantity</TableHead>
-              <TableHead>Price</TableHead>
+              <TableHead>Бүтээгдэхүүн</TableHead>
+              <TableHead>Тоо ширхэг</TableHead>
+              <TableHead>Үнэ</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -78,7 +80,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
                   {product?.product?.images && (
                     <Image
                       src={urlFor(product?.product?.images[0]).url()}
-                      alt="productImage"
+                      alt="Бүтээгдэхүүний зураг"
                       width={50}
                       height={50}
                       className="border rounded-sm"
@@ -102,7 +104,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
           <div className="w-44 flex flex-col gap-1">
             {order?.amountDiscount !== 0 && (
               <div className="w-full flex items-center justify-between">
-                <strong>Discount: </strong>
+                <strong>Хямдрал: </strong>
                 <PriceFormatter
                   amount={order?.amountDiscount}
                   className="text-black font-bold"
@@ -111,7 +113,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
             )}
             {order?.amountDiscount !== 0 && (
               <div className="w-full flex items-center justify-between">
-                <strong>Subtotal: </strong>
+                <strong>Дэд нийлбэр: </strong>
                 <PriceFormatter
                   amount={
                     (order?.totalPrice as number) +
@@ -122,7 +124,7 @@ const OrderDetailDialog: React.FC<OrderDetailsDialogProps> = ({
               </div>
             )}
             <div className="w-full flex items-center justify-between">
-              <strong>Total: </strong>
+              <strong>Нийт: </strong>
               <PriceFormatter
                 amount={order?.totalPrice}
                 className="text-black font-bold"

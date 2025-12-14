@@ -28,7 +28,7 @@ export default function EmptyCart() {
         >
           <Image
             src={emptyCart}
-            alt="Empty shopping cart"
+            alt="Хоосон дэлгүүрийн сагс"
             layout="fill"
             objectFit="contain"
             className="drop-shadow-lg"
@@ -51,11 +51,11 @@ export default function EmptyCart() {
 
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold text-gray-800">
-            Your cart is feeling lonely
+            Таны сагс хоосон байна
           </h2>
           <p className="text-gray-600">
-            It looks like you haven&apos;t added anything to your cart yet.
-            Let&apos;s change that and find some amazing products for you!
+            Та сагсанд хараахан юм нэмээгүй байна. Зарим гайхалтай бүтээгдэхүүн
+            олж, сагсаа дүүргэе!
           </p>
         </div>
 
@@ -64,7 +64,7 @@ export default function EmptyCart() {
             href="/"
             className="block bg-darkColor/5 border border-darkColor/20 text-center py-2.5 rounded-full text-sm font-semibold tracking-wide hover:border-darkColor hover:bg-darkColor hover:text-white hoverEffect"
           >
-            Discover Products
+            Бүтээгдэхүүн үзэх
           </Link>
         </div>
       </motion.div>

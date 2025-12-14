@@ -42,7 +42,7 @@ const ImageView = ({ images = [], isStock }: Props) => {
         >
           <Image
             src={urlFor(active).url()}
-            alt="productImage"
+            alt="Бүтээгдэхүүний зураг"
             width={700}
             height={700}
             priority
@@ -57,11 +57,15 @@ const ImageView = ({ images = [], isStock }: Props) => {
           <button
             key={image?._key}
             onClick={() => setActive(image)}
-            className={`border rounded-md overflow-hidden ${active?._key === image?._key ? "border-darkColor opacity-100" : "opacity-80"}`}
+            className={`border rounded-md overflow-hidden ${
+              active?._key === image?._key
+                ? "border-darkColor opacity-100"
+                : "opacity-80"
+            }`}
           >
             <Image
               src={urlFor(image).url()}
-              alt={`Thumbnail ${image._key}`}
+              alt={`Жижиг зураг ${image._key}`}
               width={100}
               height={100}
               className="w-full h-auto object-contain"

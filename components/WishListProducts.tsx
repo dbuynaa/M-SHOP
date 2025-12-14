@@ -22,11 +22,11 @@ const WishListProducts = () => {
 
   const handleResetWishlist = () => {
     const confirmReset = window.confirm(
-      "Are you sure you want to reset your wishlist?"
+      "Та дуртай бүтээгдэхүүний жагсаалтаа цэвэрлэхдээ итгэлтэй байна уу?"
     );
     if (confirmReset) {
       resetFavorite();
-      toast.success("Wishlist reset successfully");
+      toast.success("Дуртай бүтээгдэхүүний жагсаалт амжилттай цэвэрлэгдлээ");
     }
   };
 
@@ -38,14 +38,14 @@ const WishListProducts = () => {
             <table className="w-full border-collapse">
               <thead className="border-b">
                 <tr className="bg-black/5">
-                  <th className="p-2 text-left">Image</th>
+                  <th className="p-2 text-left">Зураг</th>
                   <th className="p-2 text-left hidden md:table-cell">
-                    Category
+                    Ангилал
                   </th>
-                  <th className="p-2 text-left hidden md:table-cell">Type</th>
-                  <th className="p-2 text-left hidden md:table-cell">Status</th>
-                  <th className="p-2 text-left">Price</th>
-                  <th className="p-2 text-center md:text-left">Action</th>
+                  <th className="p-2 text-left hidden md:table-cell">Төрөл</th>
+                  <th className="p-2 text-left hidden md:table-cell">Төлөв</th>
+                  <th className="p-2 text-left">Үнэ</th>
+                  <th className="p-2 text-center md:text-left">Үйлдэл</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,7 +57,9 @@ const WishListProducts = () => {
                         <X
                           onClick={() => {
                             removeFromFavorite(product?._id);
-                            toast.success("Product removed from wishlist");
+                            toast.success(
+                              "Бүтээгдэхүүн дуртай жагсаалтаас хасагдлаа"
+                            );
                           }}
                           size={18}
                           className="hover:text-red-600 hover:cursor-pointer hoverEffect"
@@ -69,7 +71,7 @@ const WishListProducts = () => {
                           >
                             <Image
                               src={urlFor(product?.images[0]).url()}
-                              alt={"product image"}
+                              alt={"Бүтээгдэхүүний зураг"}
                               width={80}
                               height={80}
                               className="rounded-md group-hover:scale-105 hoverEffect h-20 w-20 object-contain"
@@ -95,9 +97,7 @@ const WishListProducts = () => {
                             : "text-red-600"
                         } font-medium text-sm hidden md:table-cell`}
                       >
-                        {(product?.stock as number) > 0
-                          ? "In Stock"
-                          : "Out of Stock"}
+                        {(product?.stock as number) > 0 ? "Байгаа" : "Дууссан"}
                       </td>
                       <td className="p-2">
                         <PriceFormatter amount={product?.price} />
@@ -114,7 +114,7 @@ const WishListProducts = () => {
             {visibleProducts < favoriteProduct?.length && (
               <div className="my-5">
                 <Button variant="outline" onClick={loadMore}>
-                  Load More
+                  Илүү их үзэх
                 </Button>
               </div>
             )}
@@ -124,7 +124,7 @@ const WishListProducts = () => {
                   onClick={() => setVisibleProducts(10)}
                   variant="outline"
                 >
-                  Load Less
+                  Бага үзэх
                 </Button>
               </div>
             )}
@@ -136,7 +136,7 @@ const WishListProducts = () => {
               variant="destructive"
               size="lg"
             >
-              Reset Wishlist
+              Дуртай жагсаалт цэвэрлэх
             </Button>
           )}
         </>
@@ -151,14 +151,14 @@ const WishListProducts = () => {
           </div>
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold tracking-tight">
-              Your wishlist is empty
+              Таны дуртай жагсаалт хоосон байна
             </h2>
             <p className="text-sm text-muted-foreground">
-              Items added to your wishlist will appear here
+              Дуртай жагсаалтад нэмсэн бүтээгдэхүүн энд харагдах болно
             </p>
           </div>
           <Button asChild>
-            <Link href="/shop">Continue Shopping</Link>
+            <Link href="/shop">Худалдан авалт үргэлжлүүлэх</Link>
           </Button>
         </div>
       )}

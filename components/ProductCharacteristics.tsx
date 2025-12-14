@@ -19,10 +19,10 @@ const ProductCharacteristics = async ({
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
-        <AccordionTrigger>{product?.name}: Characteristics</AccordionTrigger>
+        <AccordionTrigger>{product?.name}: Онцлог шинж чанар</AccordionTrigger>
         <AccordionContent>
           <p className="flex items-center justify-between">
-            Brand:{" "}
+            Брэнд:{" "}
             {brand && (
               <span className="font-semibold tracking-wide">
                 {brand[0]?.brandName}
@@ -30,19 +30,18 @@ const ProductCharacteristics = async ({
             )}
           </p>
           <p className="flex items-center justify-between">
-            Collection:{" "}
-            <span className="font-semibold tracking-wide">2025</span>
+            Цуглуулга: <span className="font-semibold tracking-wide">2025</span>
           </p>
           <p className="flex items-center justify-between">
-            Type:{" "}
+            Төрөл:{" "}
             <span className="font-semibold tracking-wide">
               {product?.variant}
             </span>
           </p>
           <p className="flex items-center justify-between">
-            Stock:{" "}
+            Нөөц:{" "}
             <span className="font-semibold tracking-wide">
-              {product?.stock ? "Available" : "Out of Stock"}
+              {product?.stock ? "Байгаа" : "Дууссан"}
             </span>
           </p>
         </AccordionContent>

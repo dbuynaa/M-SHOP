@@ -20,7 +20,7 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
     MY_ORDERS_QUERYResult[number] | null
   >(null);
   const handleDelete = () => {
-    toast.error("Delete method applied for Admin");
+    toast.error("Устгах арга нь Админд зориулагдсан");
   };
   return (
     <>
@@ -87,7 +87,7 @@ const OrdersComponent = ({ orders }: { orders: MY_ORDERS_QUERYResult }) => {
                 </TableRow>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Click to see order details</p>
+                <p>Захиалгын дэлгэрэнгүйг харах</p>
               </TooltipContent>
             </Tooltip>
           ))}
