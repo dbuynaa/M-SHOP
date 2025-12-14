@@ -11,7 +11,7 @@ import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 
 const NoAccess = ({
-  details = "Сагсны бараа бүтээгдэхүүн болон төлбөрийг харахын тулд нэвтэрнэ үү. Дуртай бүтээгдэхүүнээсээ хоцрох хэрэггүй!",
+  details = "Сагсалсан бараа бүтээгдэхүүн болон төлбөр харахын тулд нэвтэрнэ үү.",
 }: {
   details?: string;
 }) => {

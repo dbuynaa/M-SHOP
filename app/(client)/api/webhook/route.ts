@@ -1,5 +1,4 @@
-import { Metadata } from "@/actions/createCheckoutSession";
-import { backendClient } from "@/sanity/lib/backendClient";
+
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -50,81 +49,81 @@ export async function POST(req: NextRequest) {
  * Helper function to create order in Sanity after successful payment
  * TODO: Adapt this to work with your payment gateway's webhook payload
  */
-async function createOrderInSanity(paymentData: any) {
-  // TODO: Extract order data from your payment gateway's webhook payload
-  // Example:
-  // const {
-  //   orderNumber,
-  //   customerEmail,
-  //   customerName,
-  //   clerkUserId,
-  //   totalAmount,
-  //   currency,
-  //   paymentId,
-  //   items,
-  //   address,
-  // } = paymentData;
-
-  // Create Sanity product references
-  // const sanityProducts = items.map((item: any) => ({
-  //   _key: crypto.randomUUID(),
-  //   product: {
-  //     _type: "reference",
-  //     _ref: item.productId,
-  //   },
-  //   quantity: item.quantity,
-  // }));
-
-  // Create order in Sanity
-  // const order = await backendClient.create({
-  //   _type: "order",
-  //   orderNumber,
-  //   paymentId, // Replace stripeCheckoutSessionId with paymentId
-  //   customerName,
-  //   email: customerEmail,
-  //   clerkUserId,
-  //   currency,
-  //   products: sanityProducts,
-  //   totalPrice: totalAmount,
-  //   status: "paid",
-  //   orderDate: new Date().toISOString(),
-  //   address: address ? {
-  //     state: address.state,
-  //     zip: address.zip,
-  //     city: address.city,
-  //     address: address.address,
-  //     name: address.name,
-  //   } : null,
-  // });
-
-  // Update stock levels
-  // await updateStockLevels(items);
-
-  return { success: true };
-}
+// async function createOrderInSanity(paymentData: any) {
+//   // TODO: Extract order data from your payment gateway's webhook payload
+//   // Example:
+//   // const {
+//   //   orderNumber,
+//   //   customerEmail,
+//   //   customerName,
+//   //   clerkUserId,
+//   //   totalAmount,
+//   //   currency,
+//   //   paymentId,
+//   //   items,
+//   //   address,
+//   // } = paymentData;
+// 
+//   // Create Sanity product references
+//   // const sanityProducts = items.map((item: any) => ({
+//   //   _key: crypto.randomUUID(),
+//   //   product: {
+//   //     _type: "reference",
+//   //     _ref: item.productId,
+//   //   },
+//   //   quantity: item.quantity,
+//   // }));
+// 
+//   // Create order in Sanity
+//   // const order = await backendClient.create({
+//   //   _type: "order",
+//   //   orderNumber,
+//   //   paymentId, // Replace stripeCheckoutSessionId with paymentId
+//   //   customerName,
+//   //   email: customerEmail,
+//   //   clerkUserId,
+//   //   currency,
+//   //   products: sanityProducts,
+//   //   totalPrice: totalAmount,
+//   //   status: "paid",
+//   //   orderDate: new Date().toISOString(),
+//   //   address: address ? {
+//   //     state: address.state,
+//   //     zip: address.zip,
+//   //     city: address.city,
+//   //     address: address.address,
+//   //     name: address.name,
+//   //   } : null,
+//   // });
+// 
+//   // Update stock levels
+//   // await updateStockLevels(items);
+// 
+// //   return { success: true };
+// // }
 
 /**
  * Helper function to update stock levels after order creation
  */
-async function updateStockLevels(
-  items: { productId: string; quantity: number }[]
-) {
-  for (const { productId, quantity } of items) {
-    try {
-      const product = await backendClient.getDocument(productId);
-
-      if (!product || typeof product.stock !== "number") {
-        console.warn(
-          `Product with ID ${productId} not found or stock is invalid.`
-        );
-        continue;
-      }
-
-      const newStock = Math.max(product.stock - quantity, 0);
-
-      await backendClient.patch(productId).set({ stock: newStock }).commit();
-    } catch (error) {
-      console.error(`Failed to update stock for product ${productId}:`, error);
-    }
-  }
-}
+// async function updateStockLevels(
+//   items: { productId: string; quantity: number }[]
+// ) {
+//   for (const { productId, quantity } of items) {
+//     try {
+//       const product = await backendClient.getDocument(productId);
+// 
+//       if (!product || typeof product.stock !== "number") {
+//         console.warn(
+//           `Product with ID ${productId} not found or stock is invalid.`
+//         );
+//         continue;
+//       }
+// 
+//       const newStock = Math.max(product.stock - quantity, 0);
+// 
+//       await backendClient.patch(productId).set({ stock: newStock }).commit();
+//     } catch (error) {
+//       console.error(`Failed to update stock for product ${productId}:`, error);
+//     }
+//   }
+// }
